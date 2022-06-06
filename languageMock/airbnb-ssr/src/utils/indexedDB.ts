@@ -34,6 +34,7 @@ class DB {
             }
             request.onerror = (event) => {
                 console.log('数据库打开失败', event)
+                reject(event)
             }
         })
 
@@ -45,10 +46,11 @@ class DB {
         return new Promise((resolve, reject) => {
             request.onsuccess = (event: any) => {
                 console.log('数据写入成功', event)
-                resolve(event.target.result)
+                resolve(event)
             }
             request.onerror = (event: any) => {
                 console.log('数据写入失败', event)
+                reject(event)
             }
         })
     }
@@ -59,10 +61,11 @@ class DB {
         return new Promise((resolve, reject) => {
             request.onsuccess = (event: any) => {
                 console.log('数据删除成功', event)
-                resolve(event.target.result)
+                resolve(event)
             }
             request.onerror = (event: any) => {
                 console.log('数据删除失败', event)
+                reject(event)
             }
         })
     }
@@ -78,6 +81,7 @@ class DB {
             }
             request.onerror = (event: any) => {
                 console.log('查询所有数据失败', event)
+                reject(event)
             }
         })
 
@@ -94,6 +98,7 @@ class DB {
             }
             request.onerror = (event: any) => {
                 console.log('查询数据失败', event)
+                reject(event)
             }
         })
     }
