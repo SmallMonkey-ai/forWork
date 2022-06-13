@@ -4,7 +4,19 @@ import Main from "../components/main.vue";
 import Footer from "../components/footer.vue";
 // import IndexedDB from "../utils/indexedDB";
 import { fetchElephant } from "../api/index";
-
+import zhCn from "element-plus/es/locale/lang/zh-cn";
+import en from "element-plus/es/locale/lang/en";
+import { ref } from "vue";
+const value1 = ref("");
+const locale = ref(zhCn);
+const changeLang = (language: any) => {
+  if (language == "zh") {
+    locale.value = zhCn;
+  } else {
+    locale.value = en;
+  }
+  // localeLanguage.value = language.name;
+};
 // // 数据库操作
 // const airbnbDB = new IndexedDB("airbnb");
 // airbnbDB.openStore("elephant", "id", ["nose", "ear"]);
@@ -39,11 +51,13 @@ getElephant();
 </script>
 
 <template>
-  <div class="pageStyle">
-    <Header></Header>
-    <Main></Main>
-    <Footer></Footer>
-  </div>
+  <el-config-provider :locale="locale">
+    <div class="pageStyle">
+      <Header @changeLanguage="changeLang"></Header>
+      <Main></Main>
+      <Footer></Footer>
+    </div>
+  </el-config-provider>
 </template>
 
 <style scoped lang="scss">

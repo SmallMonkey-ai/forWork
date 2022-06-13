@@ -1,12 +1,23 @@
 <script setup lang="ts">
 import { AnyColumns } from "element-plus/es/components/table-v2/src/types";
 import { ref } from "vue";
+import { useI18n } from "vue-i18n";
+
+// 国际化配置
+
+const { t } = useI18n();
+const { locale: localeLanguage } = useI18n();
+
+const emit = defineEmits(["changeLanguage", ""]);
+// 头部选择
 const activeIndex = ref("1");
 const handleSelect = (key: string, keyPath: string[]) => {
   console.log(key, keyPath);
 };
 const changeLanguage = (language: string) => {
   console.log(language);
+  localeLanguage.value = language;
+  emit("changeLanguage", language);
 };
 </script>
 
@@ -24,15 +35,15 @@ const changeLanguage = (language: string) => {
       <template #title>
         <img src="../assets/img/header/changeLanguage.png" alt="" />
       </template>
-      <el-menu-item index="2-1" @click="changeLanguage('zhCn')"
-        >中文(CN)</el-menu-item
-      >
-      <el-menu-item index="2-2" @click="changeLanguage('en')"
-        >EN(英文)</el-menu-item
-      >
+      <el-menu-item index="2-1" @click="changeLanguage('zh')">{{
+        t("message.languageZh")
+      }}</el-menu-item>
+      <el-menu-item index="2-2" @click="changeLanguage('en')">{{
+        t("message.languageEn")
+      }}</el-menu-item>
     </el-sub-menu>
-    <el-menu-item index="3">Info</el-menu-item>
-    <el-menu-item index="4">Orders</el-menu-item>
+    <el-menu-item index="3">{{ t("message.info") }}</el-menu-item>
+    <el-menu-item index="4">{{ t("message.other") }}</el-menu-item>
   </el-menu>
 </template>
 
