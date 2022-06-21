@@ -17,7 +17,9 @@
     "core-js": "^3.6.5",
     "element-ui": "^2.15.5",
     "katex": "^0.15.3",
+    "swiper": "^5.4.5",
     "vue": "^2.6.11",
+    "vue-awesome-swiper": "^4.1.1",
     "wangeditor": "^4.7.15"
   },
   "devDependencies": {

@@ -1,26 +1,28 @@
 <template>
   <div>
-    <p>添加标题</p>
-    <el-input placeholder="请输入标题" v-model="input" clearable> </el-input>
     <div>
-      <p>添加内容</p>
-    </div>
-    <div style="border: 1px solid #ccc">
-      <!-- 工具栏 -->
-      <Toolbar
-        style="border-bottom: 1px solid #ccc"
-        :editor="editor"
-        :defaultConfig="toolbarConfig"
-      />
-      <!-- 编辑器 -->
-      <Editor
-        style="height: 500px"
-        :editor="editor"
-        v-model="html"
-        :defaultConfig="editorConfig"
-        @onChange="onChange"
-        @onCreated="onCreated"
-      />
+      <p>添加标题</p>
+      <el-input placeholder="请输入标题" v-model="input" clearable> </el-input>
+      <div>
+        <p>添加内容</p>
+      </div>
+      <div style="border: 1px solid #ccc">
+        <!-- 工具栏 -->
+        <Toolbar
+          style="border-bottom: 1px solid #ccc"
+          :editor="editor"
+          :defaultConfig="toolbarConfig"
+        />
+        <!-- 编辑器 -->
+        <Editor
+          style="height: 500px"
+          :editor="editor"
+          v-model="html"
+          :defaultConfig="editorConfig"
+          @onChange="onChange"
+          @onCreated="onCreated"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -37,6 +39,7 @@ export default {
   components: { Editor, Toolbar },
   data() {
     return {
+     
       input: "",
       editor: null,
       html: "<p></p>",
